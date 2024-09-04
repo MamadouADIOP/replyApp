@@ -42,20 +42,22 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
+
         setContent {
             ReplyTheme {
                 val layoutDirection = LocalLayoutDirection.current
                 Surface(
-                    modifier = Modifier
-                        .padding(
-                            start = WindowInsets.safeDrawing.asPaddingValues()
-                                .calculateStartPadding(layoutDirection),
-                            end = WindowInsets.safeDrawing.asPaddingValues()
-                                .calculateEndPadding(layoutDirection)
-                        )
+                    modifier = Modifier.padding(
+                        start = WindowInsets.safeDrawing.asPaddingValues()
+                            .calculateStartPadding(layoutDirection),
+                        end = WindowInsets.safeDrawing.asPaddingValues()
+                            .calculateEndPadding(layoutDirection)
+                    )
                 ) {
                     val windowSize = calculateWindowSizeClass(this)
-                    ReplyApp(windowSize = windowSize.widthSizeClass)
+                    ReplyApp(
+                        windowSize = windowSize.widthSizeClass
+                    )
                 }
             }
         }
@@ -67,7 +69,9 @@ class MainActivity : ComponentActivity() {
 fun ReplyAppCompactPreview() {
     ReplyTheme {
         Surface {
-            ReplyApp(  windowSize = WindowWidthSizeClass.Compact,)
+            ReplyApp(
+                windowSize = WindowWidthSizeClass.Compact
+            )
         }
     }
 }

@@ -89,10 +89,8 @@ fun ReplyHomeScreen(
             text = stringResource(id = R.string.tab_spam)
         )
     )
-
-    if (navigationType == ReplyNavigationType.PERMANENT_NAVIGATION_DRAWER
-        && replyUiState.isShowingHomepage
-    ) {
+    if (navigationType == ReplyNavigationType.PERMANENT_NAVIGATION_DRAWER && replyUiState.isShowingHomepage) {
+        val navigationDrawerContentDescription = stringResource(R.string.navigation_drawer)
         PermanentNavigationDrawer(
             drawerContent = {
                 PermanentDrawerSheet(Modifier.width(dimensionResource(R.dimen.drawer_width))) {
@@ -103,11 +101,11 @@ fun ReplyHomeScreen(
                         modifier = Modifier
                             .wrapContentWidth()
                             .fillMaxHeight()
-                            .background(MaterialTheme.colorScheme.inverseOnSurface)
                             .padding(dimensionResource(R.dimen.drawer_padding_content))
                     )
                 }
-            }
+            },
+            modifier = Modifier.testTag(navigationDrawerContentDescription)
         ) {
             ReplyAppContent(
                 navigationType = navigationType,
@@ -136,23 +134,6 @@ fun ReplyHomeScreen(
                 modifier = modifier
             )
         }
-    }
-
-    if (replyUiState.isShowingHomepage) {
-        ReplyAppContent(
-            navigationType = navigationType,
-           replyUiState = replyUiState,
-           onTabPressed = onTabPressed,
-           onEmailCardPressed = onEmailCardPressed,
-           navigationItemContentList = navigationItemContentList,
-           modifier = modifier
-       )
-    }else{
-        ReplyDetailsScreen(
-            replyUiState = replyUiState,
-            onBackPressed = onDetailScreenBackPressed,
-            modifier = modifier
-        )
     }
 }
 
