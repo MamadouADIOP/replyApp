@@ -86,7 +86,7 @@ fun ReplyAppMediumPreview() {
     }
 }
 
-@Preview(showBackground = true, widthDp = 1000)
+@Preview(showBackground = true, widthDp = 1000, showSystemUi = false)
 @Composable
 fun ReplyAppExpandedPreview() {
     ReplyTheme {
